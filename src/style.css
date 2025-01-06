@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+  }
+  
+  h1 {
+    color: rgb(255, 255, 255);
+    background-color: rgb(43, 91, 153);
+    margin: 0px;
+  }
+  
+  h1 {
+    font-family: monospace;
+    font-size: 40px;
+  }
+  
+  .email-input {
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+    background-color: black;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(43, 91, 153);
+    padding: 10px;
+  }
