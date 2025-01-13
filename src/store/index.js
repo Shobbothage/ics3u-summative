@@ -4,6 +4,7 @@ import { defineStore } from "pinia";
 export const useStore = defineStore('store', () => {
   const email = ref("");
   const cart = ref(new Map());
+  const user = ref(null);
 
   const toggleCart = (movie) => {
     if (cart.value.has(movie.id)) {
@@ -13,7 +14,7 @@ export const useStore = defineStore('store', () => {
     }
   };
 
-  return { email, cart, toggleCart };
+  return { email, cart, toggleCart,user };
 });
 
 export const useRegisterStore = defineStore('registration', () => {
