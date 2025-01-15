@@ -2,6 +2,8 @@
 import { RouterLink, useRouter } from 'vue-router';
 import { ref } from 'vue';
 import { useStore } from "../store"
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../firebase"
 import Header from '../components/Header.vue';
 import Footer from '../components/Footer.vue';
 
@@ -10,12 +12,22 @@ const router = useRouter();
 const email = ref('');
 const password = ref('');
 
-const handleLogin = () => {
-  if (password.value === "mathumi") {
-    store.email = email.value;
+const loginByEmail = async () => {
+  try {
+    const user = (await signInWithEmailAndPassword(auth, email.value, password.value)).user;
+    store.user = user;
     router.push("/movies");
-  } else {
-    alert("Invalid Password");
+  } catch (error) {
+    alert("There was an error signing in with email!");
+  }
+};
+const loginByGoogle = async () => {
+  try {
+    const user = (await signInWithPopup(auth, new GoogleAuthProvider())).user;
+    store.user = user;
+    router.push("/movies");
+  } catch (error) {
+    alert("There was an error signing in with Google!");
   }
 };
 </script>
@@ -28,11 +40,12 @@ const handleLogin = () => {
       </div>
       <div class="form-container">
         <h2>Login to Your Account</h2>
-        <form @submit.prevent="handleLogin">
-          <input type="email" placeholder="Email" class="input-field" required />
+        <form @submit.prevent="loginByEmail()">
+          <input v-model:="email" type="email" placeholder="Email" class="input-field" required />
           <input v-model:="password" type="password" placeholder="Password" class="input-field" required />
-          <button type="submit" class="button login">Login</button>
+          <button type="submit" class="button login">Login by Email</button>
         </form>
+        <button @click="loginByGoogle()" type="submit" class="button login">Login by Google</button>
       </div>
     </div>
   </div>

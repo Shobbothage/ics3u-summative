@@ -26,7 +26,7 @@ const email = computed({
 });
 const nameDisplayUpdater = (event) => {
     event.preventDefault();
-    userStore.userData({
+    userStore.user({
         firstName: firstName.value,
         lastName: lastName.value,
         email: email.value,

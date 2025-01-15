@@ -1,15 +1,22 @@
 <script setup>
 import { useRouter, RouterView } from 'vue-router';
 import { useStore } from '../store';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const store = useStore();
 const router = useRouter();
+const logout = () => {
+  store.user = null;
+  signOut(auth);
+  router.push(`/`);
+}
 </script>
 
 <template>
   <header class="header">
     <button @click="router.push(`/cart`)" class="logout-button">Cart</button>
-    <button @click="router.push(`/`)" class="logout-button">Logout</button>
+    <button @click="logout()" class="logout-button">Logout</button>
     <button @click="router.push(`/settings`)" class="settings-button">Settings</button>
   </header>
 </template>

@@ -3,6 +3,8 @@ import Footer from '../components/Footer.vue';
 import Genres from "../components/Genres.vue";
 import { useRouter, RouterView } from 'vue-router';
 import { useRegisterStore } from '../store';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 const store = useRegisterStore();
 const router = useRouter();
 
@@ -29,6 +31,12 @@ const genresList = [
     genreName: "Crime"
   },
 ]
+
+const logout = () => {
+  store.user = null;
+  signOut(auth);
+  router.push(`/`);
+}
 </script>
 
 <template>
@@ -36,7 +44,7 @@ const genresList = [
     <header class="header">
       <h1>{{ `Welome to ClipNet, ${store.firstName}!` }}</h1>
       <button @click="router.push(`/cart`)" class="cart-button">Cart</button>
-      <button @click="router.push(`/`)" class="logout-button">Logout</button>
+      <button @click="logout()" class="logout-button">Logout</button>
       <button @click="router.push(`/settings`)" class="settings-button">Settings</button>
     </header>
     <main class="movie-container">
