@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 
+
 export const useStore = defineStore('store', () => {
   const email = ref("");
   const cart = ref(new Map());
@@ -29,6 +30,7 @@ export const userAuthorized = new Promise((resolve, reject) => {
       reject();
     }
   })
+})
 
 
 export const useRegisterStore = defineStore('registration', () => {

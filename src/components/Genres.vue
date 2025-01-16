@@ -29,6 +29,7 @@ function getMovieDetails(id) {
 onMounted(async () => {
   response.value = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_TMDB_KEY}&with_genres=${selectedGenre.value}`);
 })
+
 </script>
 
 <template>
