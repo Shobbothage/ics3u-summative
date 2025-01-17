@@ -20,19 +20,6 @@ export const useStore = defineStore('store', () => {
   return { email, cart, toggleCart,user };
 });
 
-export const userAuthorized = new Promise((resolve, reject) => {
-  onAuthStateChanged(auth, user => {
-    try {
-      const store = useStore();
-      store.user = user;
-      resolve();
-    } catch (error) {
-      reject();
-    }
-  })
-})
-
-
 export const useRegisterStore = defineStore('registration', () => {
   const firstName = ref('');
   const lastName = ref('');
@@ -52,3 +39,16 @@ export const useRegisterStore = defineStore('registration', () => {
     user,
   };
 });
+
+export const userAuthorized = new Promise((resolve, reject) => {
+  onAuthStateChanged(auth, user => {
+    try {
+      const store = useStore();
+      store.user = user;
+      resolve();
+    } catch (error) {
+      reject();
+    }
+  })
+})
+

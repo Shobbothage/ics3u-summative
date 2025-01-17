@@ -13,7 +13,7 @@ const response = ref(null);
 const genres = [
   { id: 12, genreName: 'Adventure' },
   { id: 16, genreName: 'Animation' },
-  { id: 35, genreName: 'Comedy' },
+  { id: 878, genreName: 'Sci-Fi' },
   { id: 28, genreName: 'Action' },
   { id: 80, genreName: 'Crime' },
 ];

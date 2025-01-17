@@ -29,6 +29,3 @@ coverage
 *.tsbuildinfo
 <<<<<<< HEAD
 *.env
-=======
-*.env
->>>>>>> 49860d30f81fbe25ba9a33fd5b6632979fdb1d8c

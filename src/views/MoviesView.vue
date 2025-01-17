@@ -23,8 +23,8 @@ const genresList = [
     genreName: "Animation"
   },
   {
-    id: 35,
-    genreName: "Comedy"
+    id: 878,
+    genreName: "Sci-Fi"
   },
   {
     id: 80,
